@@ -10,6 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import com.company.base_library.utils.constant.MemoryConstants;
+import com.company.base_library.utils.constant.TimeConstants;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,8 +20,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
-import me.goldze.mvvmhabit.utils.constant.MemoryConstants;
-import me.goldze.mvvmhabit.utils.constant.TimeConstants;
 
 /**
  * Created by goldze on 2017/5/14.

@@ -1,8 +1,9 @@
 package com.company.base_library.http.download;
 
+import com.company.base_library.bus.RxBus;
+
 import java.io.IOException;
 
-import me.goldze.mvvmhabit.bus.RxBus;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import okio.Buffer;

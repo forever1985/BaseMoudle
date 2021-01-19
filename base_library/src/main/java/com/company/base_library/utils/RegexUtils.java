@@ -1,11 +1,12 @@
 package com.company.base_library.utils;
 
+import com.company.base_library.utils.constant.RegexConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import me.goldze.mvvmhabit.utils.constant.RegexConstants;
 
 /**
  * Created by goldze on 2017/6/19.

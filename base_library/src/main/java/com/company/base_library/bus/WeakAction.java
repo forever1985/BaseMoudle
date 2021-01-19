@@ -1,9 +1,10 @@
 package com.company.base_library.bus;
 
+import com.company.base_library.binding.command.BindingAction;
+import com.company.base_library.binding.command.BindingConsumer;
+
 import java.lang.ref.WeakReference;
 
-import me.goldze.mvvmhabit.binding.command.BindingAction;
-import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 
 
 /**

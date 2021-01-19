@@ -1,5 +1,8 @@
 package com.company.base_library.bus;
 
+import com.company.base_library.binding.command.BindingAction;
+import com.company.base_library.binding.command.BindingConsumer;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,8 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import me.goldze.mvvmhabit.binding.command.BindingAction;
-import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 
 /**
  * About : kelin的Messenger

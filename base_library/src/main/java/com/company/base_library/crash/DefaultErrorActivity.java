@@ -33,7 +33,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-import me.goldze.mvvmhabit.R;
+
+import com.company.base_library.R;
 
 
 public final class DefaultErrorActivity extends AppCompatActivity {
@@ -100,7 +101,7 @@ public final class DefaultErrorActivity extends AppCompatActivity {
                                     })
                             .show();
                     TextView textView = (TextView) dialog.findViewById(android.R.id.message);
-                    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.customactivityoncrash_error_activity_error_details_text_size));
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.sp_12));
                 }
             });
         } else {

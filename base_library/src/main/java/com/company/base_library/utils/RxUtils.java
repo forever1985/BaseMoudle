@@ -2,19 +2,20 @@ package com.company.base_library.utils;
 
 import android.content.Context;
 
-import com.trello.rxlifecycle2.LifecycleProvider;
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.company.base_library.http.BaseResponse;
+import com.company.base_library.http.ExceptionHandle;
+import com.trello.rxlifecycle4.LifecycleProvider;
+import com.trello.rxlifecycle4.LifecycleTransformer;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
-import me.goldze.mvvmhabit.http.BaseResponse;
-import me.goldze.mvvmhabit.http.ExceptionHandle;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.core.ObservableTransformer;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
  * Created by goldze on 2017/6/19.

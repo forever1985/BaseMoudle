@@ -1,9 +1,10 @@
 package com.company.base_library.http.cookie;
 
 
+import com.company.base_library.http.cookie.store.CookieStore;
+
 import java.util.List;
 
-import me.goldze.mvvmhabit.http.cookie.store.CookieStore;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
