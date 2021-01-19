@@ -81,19 +81,11 @@ dependencies {
     //Google LiveData
     api rootProject.ext.dependencies["lifecycle-extensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
-    //statusbarutil
-    api 'com.jaeger.statusbarutil:library:1.5.1'
-    // Room
-    api 'androidx.room:room-runtime:2.2.5'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
 
     //multidex65536
     api 'androidx.multidex:multidex:2.0.1'
     api 'androidx.multidex:multidex-instrumentation:2.0.0'
-    //fastjson
-    api 'com.alibaba:fastjson:1.2.62'
-    // EventBus
-    api 'org.greenrobot:eventbus:3.2.0'
 
     api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 }
