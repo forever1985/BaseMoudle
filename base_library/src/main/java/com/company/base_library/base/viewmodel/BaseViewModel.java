@@ -1,4 +1,4 @@
-package com.company.base_library.base;
+package com.company.base_library.base.viewmodel;
 
 import android.app.Application;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
+import com.company.base_library.base.model.BaseModel;
 import com.company.base_library.bus.event.SingleLiveEvent;
 import com.trello.rxlifecycle4.LifecycleProvider;
 

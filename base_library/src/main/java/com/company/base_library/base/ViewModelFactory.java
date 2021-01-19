@@ -9,6 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.company.base_library.base.viewmodel.BaseViewModel;
+
 /**
  * Created by goldze on 2018/9/30.
  */

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="simpleModel"
+            type="cn.makeid.jj_print.widget.model.SimpleTitleModel" />
+    </data>
+
+
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/image_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:id="@+id/rellay_simple_title_bar_background"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/simple_title_bar_default_height"
+                android:background="@color/white">
+
+                <FrameLayout
+                    android:id="@+id/fralay_simple_title_bar_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/simple_title_bar_left_padding"
+                    android:paddingRight="@dimen/simple_title_bar_inner_padding">
+
+                    <TextView
+                        android:id="@+id/tv_simple_title_bar_left_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:drawablePadding="@dimen/simple_title_bar_drawable_padding"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fralay_simple_title_bar_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/simple_title_bar_inner_padding"
+                    android:paddingRight="@dimen/simple_title_bar_right_padding">
+
+                    <TextView
+                        android:id="@+id/tv_simple_title_bar_right_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:drawablePadding="@dimen/simple_title_bar_drawable_padding"
+
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fralay_simple_title_bar_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_toLeftOf="@+id/fralay_simple_title_bar_right"
+                    android:layout_toRightOf="@+id/fralay_simple_title_bar_left">
+
+                    <TextView
+                        android:id="@+id/tv_simple_title_bar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textSize="18sp" />
+
+                </FrameLayout>
+
+                <View
+                    android:id="@+id/v_simple_title_bar_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/simple_title_bar_shadow_height"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+
+</layout>
+

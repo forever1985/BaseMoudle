@@ -1,13 +1,17 @@
 package com.company.base_library.http;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by goldze on 2017/5/10.
  * 该类仅供参考，实际业务返回的固定字段, 根据需求来定义，
  */
 public class BaseResponse<T> {
     private int code;
-    private String message;
+    @SerializedName("data")
     private T result;
+    @SerializedName(value = "message",alternate = "msg")
+    private String msg;
 
     public int getCode() {
         return code;
@@ -29,11 +33,11 @@ public class BaseResponse<T> {
         return code == 0;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

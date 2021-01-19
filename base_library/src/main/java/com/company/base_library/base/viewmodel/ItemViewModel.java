@@ -1,7 +1,9 @@
-package com.company.base_library.base;
+package com.company.base_library.base.viewmodel;
 
 
 import androidx.annotation.NonNull;
+
+import com.company.base_library.base.viewmodel.BaseViewModel;
 
 /**
  * ItemViewModel

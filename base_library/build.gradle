@@ -82,7 +82,8 @@ dependencies {
     api rootProject.ext.dependencies["lifecycle-extensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
 
-
+//statusbarutil
+    api 'com.jaeger.statusbarutil:library:1.5.1'
     //multidex65536
     api 'androidx.multidex:multidex:2.0.1'
     api 'androidx.multidex:multidex-instrumentation:2.0.0'

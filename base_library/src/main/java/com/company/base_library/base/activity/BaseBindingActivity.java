@@ -1,36 +1,60 @@
-package com.company.base_library.base;
+package com.company.base_library.base.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
-import com.afollestad.materialdialogs.MaterialDialog;
+import com.company.base_library.R;
+import com.company.base_library.base.viewmodel.BaseViewModel;
+import com.company.base_library.base.IBaseView;
 import com.company.base_library.bus.Messenger;
+import com.company.base_library.widget.SimpleTitleBarBuilder;
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 
-/**
- * Created by goldze on 2017/6/15.
- * 一个拥有DataBinding框架的基Activity
- * 这里根据项目业务可以换成你自己熟悉的BaseActivity, 但是需要继承RxAppCompatActivity,方便LifecycleProvider管理生命周期
- */
-public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity implements IBaseView {
+ /**
+  *
+  * @Package:        com.company.base_library.base.activity
+  * @ClassName:      BaseActivity
+  * @Description:    基本的activity界面，可以设置是否包含title，使用getTitleRes判断，如果不返回string id，那么
+  *                  默认不使用title，将以自定义布局文件使用，反之使用title
+  * @Author:         Chenqiang
+  * @CreateDate:     2021/1/19 14:11
+  */
+public abstract class BaseBindingActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity implements IBaseView {
     protected V binding;
     protected VM viewModel;
     private int viewModelId;
-    private MaterialDialog dialog;
+    /**
+     * 包含子类的container
+     */
+    private FrameLayout mContainer;
+    /**
+     * 界面标题builder
+     */
+    private SimpleTitleBarBuilder simpleTitleBarBuilder;
+
+    public SimpleTitleBarBuilder getSimpleTitleBarBuilder() {
+        return simpleTitleBarBuilder;
+    }
+
+
+    /**
+     * 获取title res id,如果不显示title，直接返回0即可
+     * @return res id
+     */
+    public abstract int getTitleRes ();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +91,18 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
      */
     private void initViewDataBinding(Bundle savedInstanceState) {
         //DataBindingUtil类需要在project的build中配置 dataBinding {enabled true }, 同步后会自动关联android.databinding包
-        binding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState));
+        if (getTitleRes() == 0) {
+            binding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState));
+        } else {
+            setContentView(R.layout.activity_base_title);
+            mContainer = findViewById(R.id.base_container);
+            binding = DataBindingUtil.inflate(getLayoutInflater(),initContentView(savedInstanceState),null,false);
+            mContainer.addView(binding.getRoot());
+            simpleTitleBarBuilder = SimpleTitleBarBuilder.attach(this);
+            simpleTitleBarBuilder.setLeftClickAsBack();
+            simpleTitleBarBuilder.setTitleText(getTitleRes());
+        }
+
         viewModelId = initVariableId();
         viewModel = initViewModel();
         if (viewModel == null) {
@@ -105,49 +140,27 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     //注册ViewModel与View的契约UI回调事件
     protected void registorUIChangeLiveDataCallBack() {
         //加载对话框显示
-        viewModel.getUC().getShowDialogEvent().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String title) {
-            }
+        viewModel.getUC().getShowDialogEvent().observe(this, (Observer<String>) title -> {
         });
         //加载对话框消失
-        viewModel.getUC().getDismissDialogEvent().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(@Nullable Void v) {
-            }
+        viewModel.getUC().getDismissDialogEvent().observe(this, (Observer<Void>) v -> {
         });
         //跳入新页面
-        viewModel.getUC().getStartActivityEvent().observe(this, new Observer<Map<String, Object>>() {
-            @Override
-            public void onChanged(@Nullable Map<String, Object> params) {
-                Class<?> clz = (Class<?>) params.get(BaseViewModel.ParameterField.CLASS);
-                Bundle bundle = (Bundle) params.get(BaseViewModel.ParameterField.BUNDLE);
-                startActivity(clz, bundle);
-            }
+        viewModel.getUC().getStartActivityEvent().observe(this, (Observer<Map<String, Object>>) params -> {
+            Class<?> clz = (Class<?>) params.get(BaseViewModel.ParameterField.CLASS);
+            Bundle bundle = (Bundle) params.get(BaseViewModel.ParameterField.BUNDLE);
+            startActivity(clz, bundle);
         });
         //跳入ContainerActivity
-        viewModel.getUC().getStartContainerActivityEvent().observe(this, new Observer<Map<String, Object>>() {
-            @Override
-            public void onChanged(@Nullable Map<String, Object> params) {
-                String canonicalName = (String) params.get(BaseViewModel.ParameterField.CANONICAL_NAME);
-                Bundle bundle = (Bundle) params.get(BaseViewModel.ParameterField.BUNDLE);
-                startContainerActivity(canonicalName, bundle);
-            }
+        viewModel.getUC().getStartContainerActivityEvent().observe(this, (Observer<Map<String, Object>>) params -> {
+            String canonicalName = (String) params.get(BaseViewModel.ParameterField.CANONICAL_NAME);
+            Bundle bundle = (Bundle) params.get(BaseViewModel.ParameterField.BUNDLE);
+            startContainerActivity(canonicalName, bundle);
         });
         //关闭界面
-        viewModel.getUC().getFinishEvent().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(@Nullable Void v) {
-                finish();
-            }
-        });
+        viewModel.getUC().getFinishEvent().observe(this, (Observer<Void>) v -> finish());
         //关闭上一层
-        viewModel.getUC().getOnBackPressedEvent().observe(this, new Observer<Void>() {
-            @Override
-            public void onChanged(@Nullable Void v) {
-                onBackPressed();
-            }
-        });
+        viewModel.getUC().getOnBackPressedEvent().observe(this, (Observer<Void>) v -> onBackPressed());
     }
 
     /**

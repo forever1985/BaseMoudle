@@ -1,4 +1,4 @@
-package com.company.base_library.base;
+package com.company.base_library.base.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.company.base_library.R;
+import com.company.base_library.base.fragment.BaseBindingFragment;
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
 
 
@@ -20,7 +21,7 @@ import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
  * 盛装Fragment的一个容器(代理)Activity
  * 普通界面只需要编写Fragment,使用此Activity盛装,这样就不需要每个界面都在AndroidManifest中注册一遍
  */
-public class ContainerActivity extends RxAppCompatActivity {
+public class ContainerActivity extends BaseActivity {
     private static final String FRAGMENT_TAG = "content_fragment_tag";
     public static final String FRAGMENT = "fragment";
     public static final String BUNDLE = "bundle";
@@ -82,8 +83,8 @@ public class ContainerActivity extends RxAppCompatActivity {
     @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content);
-        if (fragment instanceof BaseFragment) {
-            if (!((BaseFragment) fragment).isBackPressed()) {
+        if (fragment instanceof BaseBindingFragment) {
+            if (!((BaseBindingFragment) fragment).isBackPressed()) {
                 super.onBackPressed();
             }
         } else {

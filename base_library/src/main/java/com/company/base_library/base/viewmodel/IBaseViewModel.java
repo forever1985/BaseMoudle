@@ -1,4 +1,4 @@
-package com.company.base_library.base;
+package com.company.base_library.base.viewmodel;
 
 
 import androidx.lifecycle.Lifecycle;

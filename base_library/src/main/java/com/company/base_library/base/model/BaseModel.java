@@ -1,4 +1,4 @@
-package com.company.base_library.base;
+package com.company.base_library.base.model;
 
 /**
  * Created by goldze on 2017/6/15.
