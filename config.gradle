@@ -1,0 +1,62 @@
+ext {
+    //android开发版本配置
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "29.0.3",
+            applicationId    : "com.company.base",
+            minSdkVersion    : 23,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+    //version配置
+    versions = [
+            "support-version": "1.2.0-alpha03",
+            "junit-version"  : "4.12",
+    ]
+    //support配置
+    support = [
+            'support-v4'              : "androidx.legacy:legacy-support-v4:1.0.0",
+            'appcompat-v7'            : "androidx.appcompat:appcompat:${versions["support-version"]}",
+            'recyclerview-v7'         : "androidx.recyclerview:recyclerview:${versions["support-version"]}",
+            'support-v13'             : "androidx.legacy:legacy-support-v13:${versions["support-version"]}",
+            'support-fragment'        : "androidx.fragment:fragment:${versions["support-version"]}",
+            'design'                  : "com.google.android.material:material:1.0.0",
+            'animated-vector-drawable': "androidx.vectordrawable:vectordrawable-animated:${versions["support-version"]}",
+            'junit'                   : "junit:junit:${versions["junit-version"]}",
+    ]
+    //依赖第三方配置
+    dependencies = [
+            //rxjava
+            "rxjava"                               : "io.reactivex.rxjava3:rxjava:3.0.8",
+            "rxandroid"                            : "io.reactivex.rxjava3:rxandroid:3.0.0",
+            //rx系列与View生命周期同步
+            "rxlifecycle"                          : "com.trello.rxlifecycle4:rxlifecycle-android:4.0.2",
+            "rxlifecycle-components"               : "com.trello.rxlifecycle4:rxlifecycle-components:4.0.2",
+            //rxbinding
+            "rxbinding"                            : "com.jakewharton.rxbinding4:rxbinding:4.0.0",
+            //rx 6.0权限请求
+            "rxpermissions"                        : "com.github.tbruyelle:rxpermissions:0.12",
+            //network
+            "okhttp"                               : "com.squareup.okhttp3:okhttp:4.9.0",
+            "retrofit"                             : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-gson"                       : "com.squareup.retrofit2:converter-gson:2.9.0",
+            "adapter-rxjava"                       : "com.squareup.retrofit2:adapter-rxjava3:2.9.0",
+            //glide图片加载
+            "glide"                                : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"                       : "com.github.bumptech.glide:compiler:4.11.0",
+            //json解析
+            "gson"                                 : "com.google.code.gson:gson:2.8.6",
+            //material-dialogs
+            "material-dialogs-core"                : "com.afollestad.material-dialogs:core:3.3.0",
+            //recyclerview的databinding套装
+            "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0",
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0",
+            "bindingcollectionadapter-viewpager2": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:4.0.0",
+            //Google AAC
+            "lifecycle-extensions"                 : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            "lifecycle-compiler"                   : "androidx.lifecycle:lifecycle-compiler:2.2.0",
+    ]
+}
+
+

@@ -1,0 +1,99 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+    dataBinding {
+        enabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    //support
+    api rootProject.ext.support["support-v4"]
+    api rootProject.ext.support["appcompat-v7"]
+    api rootProject.ext.support["recyclerview-v7"]
+    //rxjava
+    api rootProject.ext.dependencies.rxjava
+    api rootProject.ext.dependencies.rxandroid
+    //rxlifecycle
+    api(rootProject.ext.dependencies.rxlifecycle) {
+        exclude group: 'com.android.support'
+    }
+    api(rootProject.ext.dependencies["rxlifecycle-components"]) {
+        exclude group: 'com.android.support'
+    }
+    //rxbinding
+    api(rootProject.ext.dependencies.rxbinding) {
+        exclude group: 'com.android.support'
+    }
+    api 'com.jakewharton.rxbinding4:rxbinding-core:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-drawerlayout:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-leanback:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-recyclerview:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-viewpager:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-viewpager2:4.0.0'
+    //rxpermissions
+    api(rootProject.ext.dependencies.rxpermissions) {
+        exclude group: 'com.android.support'
+    }
+    //network
+    api rootProject.ext.dependencies.okhttp
+    api rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["adapter-rxjava"]
+    //json
+    api rootProject.ext.dependencies.gson
+    //material-dialogs
+    api(rootProject.ext.dependencies["material-dialogs-core"]) {
+        exclude group: 'com.android.support'
+    }
+    //glide
+    api (rootProject.ext.dependencies.glide){
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    //bindingcollectionadapter
+    api(rootProject.ext.dependencies.bindingcollectionadapter) {
+        exclude group: 'com.android.support'
+    }
+    api(rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]) {
+        exclude group: 'com.android.support'
+    }
+    //Google LiveData
+    api rootProject.ext.dependencies["lifecycle-extensions"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    //statusbarutil
+    api 'com.jaeger.statusbarutil:library:1.5.1'
+    // Room
+    api 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    //multidex65536
+    api 'androidx.multidex:multidex:2.0.1'
+    api 'androidx.multidex:multidex-instrumentation:2.0.0'
+    //fastjson
+    api 'com.alibaba:fastjson:1.2.62'
+    // EventBus
+    api 'org.greenrobot:eventbus:3.2.0'
+
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+}
