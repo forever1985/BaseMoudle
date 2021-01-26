@@ -10,7 +10,16 @@ buildscript{
     }
 }
 
-
+gradlePlugin {
+    plugins {
+        version {
+            // 在 app 模块需要通过 id 引用这个插件
+            id = 'com.version.versionplugin'
+            // 实现这个插件的类的路径
+            implementationClass = 'com.version.versionplugin.VersionPlugin'
+        }
+    }
+}
 
 repositories {
     // 需要添加 jcenter 否则会提示找不到 gradlePlugin
@@ -34,13 +43,3 @@ compileTestKotlin {
     }
 }
 
-gradlePlugin {
-    plugins {
-        version {
-            // 在 app 模块需要通过 id 引用这个插件
-            id = 'com.version.versionplugin'
-            // 实现这个插件的类的路径
-            implementationClass = 'com.version.versionplugin.VersionPlugin'
-        }
-    }
-}
