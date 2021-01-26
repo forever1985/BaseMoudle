@@ -1,17 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
+import com.version.versionplugin.*
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdkVersion BuildVersion.compileSdkVersion
+    buildToolsVersion BuildVersion.buildToolsVersion
 
     defaultConfig {
         applicationId "com.company.baseproject"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
+        minSdkVersion BuildVersion.minSdkVersion
+        targetSdkVersion BuildVersion.targetSdkVersion
+        versionCode BuildVersion.versionCode
+        versionName BuildVersion.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,16 +23,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    kapt {
+        generateStubs = true
+    }
+    dataBinding {
+        enabled true
+    }
+    /**
+     * java版本
+     */
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
+    api project(path: ':base_library')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    kapt "com.android.databinding:compiler:2.3.3"
 }

@@ -1,11 +1,14 @@
 apply plugin: 'com.android.library'
+
+import com.version.versionplugin.*
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileSdkVersion BuildVersion.compileSdkVersion
+    buildToolsVersion BuildVersion.buildToolsVersion
     defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
+        minSdkVersion BuildVersion.minSdkVersion
+        targetSdkVersion BuildVersion.targetSdkVersion
+        versionCode BuildVersion.versionCode
+        versionName BuildVersion.versionName
     }
     dataBinding {
         enabled true
@@ -24,69 +27,69 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    //support
-    api rootProject.ext.support["support-v4"]
-    api rootProject.ext.support["appcompat-v7"]
-    api rootProject.ext.support["recyclerview-v7"]
+//    //support
+    api BuildConfig.supportV4
+    api BuildConfig.supportV7
+    api BuildConfig.recyclerviewV7
     //rxjava
-    api rootProject.ext.dependencies.rxjava
-    api rootProject.ext.dependencies.rxandroid
+    api BuildConfig.rxjava
+    api BuildConfig.rxandroid
     //rxlifecycle
-    api(rootProject.ext.dependencies.rxlifecycle) {
+    api(BuildConfig.rxlifecycle) {
         exclude group: 'com.android.support'
     }
-    api(rootProject.ext.dependencies["rxlifecycle-components"]) {
+    api(BuildConfig.rxlifecycleComponents) {
         exclude group: 'com.android.support'
     }
     //rxbinding
-    api(rootProject.ext.dependencies.rxbinding) {
+    api(BuildConfig.rxbinding) {
         exclude group: 'com.android.support'
     }
-    api 'com.jakewharton.rxbinding4:rxbinding-core:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-drawerlayout:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-leanback:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-recyclerview:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-viewpager:4.0.0'
-    api 'com.jakewharton.rxbinding4:rxbinding-viewpager2:4.0.0'
+    api BuildConfig.rxbindingCore
+    api BuildConfig.rxbindingAppcompat
+    api BuildConfig.rxbindingDrawerLayout
+    api BuildConfig.rxbindingLeanBack
+    api BuildConfig.rxbindingRecyclerview
+    api BuildConfig.rxbindingSlidingpanelayout
+    api BuildConfig.rxbindingSwiperefreshlayout
+    api BuildConfig.rxbindingViewpager
+    api BuildConfig.rxbindingViewpager2
     //rxpermissions
-    api(rootProject.ext.dependencies.rxpermissions) {
+    api(BuildConfig.rxpermissions) {
         exclude group: 'com.android.support'
     }
     //network
-    api rootProject.ext.dependencies.okhttp
-    api rootProject.ext.dependencies.retrofit
-    api rootProject.ext.dependencies["converter-gson"]
-    api rootProject.ext.dependencies["adapter-rxjava"]
+    api BuildConfig.okhttp
+    api BuildConfig.retrofit
+    api BuildConfig.converterGson
+    api BuildConfig.adapterRxjava
     //json
-    api rootProject.ext.dependencies.gson
+    api BuildConfig.gson
     //material-dialogs
-    api(rootProject.ext.dependencies["material-dialogs-core"]) {
+    api(BuildConfig.materialDialogsCore) {
         exclude group: 'com.android.support'
     }
     //glide
-    api (rootProject.ext.dependencies.glide){
+    api (BuildConfig.glide){
         exclude group: 'com.android.support'
     }
-    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    annotationProcessor BuildConfig.glideCompiler
     //bindingcollectionadapter
-    api(rootProject.ext.dependencies.bindingcollectionadapter) {
+    api(BuildConfig.bindingcollectionadapter) {
         exclude group: 'com.android.support'
     }
-    api(rootProject.ext.dependencies["bindingcollectionadapter-recyclerview"]) {
+    api(BuildConfig.bindingcollectionadapterRecyclerview) {
         exclude group: 'com.android.support'
     }
     //Google LiveData
-    api rootProject.ext.dependencies["lifecycle-extensions"]
-    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+    api BuildConfig.lifecycleExtensions
+    annotationProcessor BuildConfig.lifecycleCompiler
 
 //statusbarutil
-    api 'com.jaeger.statusbarutil:library:1.5.1'
+    api BuildConfig.statusBar
     //multidex65536
-    api 'androidx.multidex:multidex:2.0.1'
-    api 'androidx.multidex:multidex-instrumentation:2.0.0'
+    api BuildConfig.multiDex
+    api BuildConfig.multiDexInstrumentation
 
     api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 }

@@ -62,7 +62,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
                 break;
             case CodeRule.CODE_330:
                 //请求失败，打印Message
-                ToastUtils.showShort(baseResponse.getMessage());
+                ToastUtils.showShort(baseResponse.getMsg());
                 break;
             case CodeRule.CODE_500:
                 //服务器内部异常

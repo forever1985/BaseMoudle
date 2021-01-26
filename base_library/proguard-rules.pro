@@ -19,3 +19,147 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#support
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+-dontwarn android.support.**
+
+#databinding
+-keep class android.databinding.** { *; }
+-dontwarn android.databinding.**
+
+#annotation
+-keep class android.support.annotation.** { *; }
+-keep interface android.support.annotation.** { *; }
+
+#retrofit
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+#gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.sunloto.shandong.bean.** { *; }
+
+#glide
+-keep public class * implements com.bumptech.glide.module.AppGlideModule
+-keep public class * implements com.bumptech.glide.module.LibraryGlideModule
+-keep class com.bumptech.glide.** { *; }
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
+
+#glide-transformations
+-keep class jp.wasabeef.glide.transformations.** {*;}
+-dontwarn jp.wasabeef.glide.transformations.**
+
+#okhttp
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.squareup.okhttp3.** { *; }
+-keep interface com.squareup.okhttp3.** { *; }
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn com.squareup.okhttp.**
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+#RxJava RxAndroid
+-dontwarn rx.*
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+#RxLifecycle
+-keep class com.trello.rxlifecycle2.** { *; }
+-keep interface com.trello.rxlifecycle2.** { *; }
+-dontwarn com.trello.rxlifecycle2.**
+
+#RxPermissions
+-keep class com.tbruyelle.rxpermissions2.** { *; }
+-keep interface com.tbruyelle.rxpermissions2.** { *; }
+
+#material-dialogs
+-keep class com.afollestad.materialdialogs.** { *; }
+-dontwarn om.afollestad.materialdialogs.**
+
+#=====================bindingcollectionadapter=====================
+-keep class me.tatarka.bindingcollectionadapter.** { *; }
+-dontwarn me.tatarka.bindingcollectionadapter.**
+
+-keep public class * extends com.company.base_library.*.*{ *; }
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class * extends android.view.View
+-keep public class com.android.vending.licensing.ILicensingService
+-keep class androidx.core.content.**{*;}
+-keep public class * extends androidx.core.content.FileProvider
+-keep class android.support.** {*;}
+
+-keep public class * extends android.view.View{
+    *** get*();
+    void set*(***);
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-keep class **.R$* {
+ *;
+}
+-keepclassmembers class * {
+    void *(**On*Event);
+}
+
+-dontwarn com.google.**
+-keep class com.google.gson.** {*;}
+-keep class com.google.protobuf.** {*;}
+##XBanner 图片轮播混淆配置
+-keep class cn.company.lib.banner.XBanner.**{*;}
+
+#---------------------------------webview------------------------------------
+-keepclassmembers class fqcn.of.javascript.interface.for.Webview {
+   public *;
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, jav.lang.String);
+}
+#----------------------------------------------------------------------------

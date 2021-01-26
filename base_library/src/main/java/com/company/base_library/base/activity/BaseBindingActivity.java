@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.company.base_library.R;
+import com.company.base_library.application.BaseApplication;
 import com.company.base_library.base.viewmodel.BaseViewModel;
 import com.company.base_library.base.IBaseView;
 import com.company.base_library.bus.Messenger;
 import com.company.base_library.widget.SimpleTitleBarBuilder;
-import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -237,19 +237,8 @@ public abstract class BaseBindingActivity<V extends ViewDataBinding, VM extends 
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    public VM initViewModel() {
-        return null;
-    }
+    public abstract VM initViewModel();
 
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void initViewObservable() {
-
-    }
 
     /**
      * 创建ViewModel
@@ -259,6 +248,7 @@ public abstract class BaseBindingActivity<V extends ViewDataBinding, VM extends 
      * @return
      */
     public <T extends ViewModel> T createViewModel(FragmentActivity activity, Class<T> cls) {
-        return new ViewModelProvider(activity).get(cls);
+        ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(BaseApplication.getInstance());
+        return new ViewModelProvider(activity,factory).get(cls);
     }
 }
