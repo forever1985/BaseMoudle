@@ -19,6 +19,10 @@ buildscript {
 plugins {
     id "com.version.versionplugin" apply false
 }
+subprojects {
+    project.apply(plugin: "com.version.versionplugin")
+
+}
 allprojects {
     repositories {
         google()
@@ -29,10 +33,7 @@ allprojects {
 }
 
 
-subprojects {
-    project.apply(plugin: "com.version.versionplugin")
 
-}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
