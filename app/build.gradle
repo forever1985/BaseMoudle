@@ -26,9 +26,12 @@ android {
     kapt {
         generateStubs = true
     }
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding {
+            enabled true
+        }
     }
+
     /**
      * java版本
      */

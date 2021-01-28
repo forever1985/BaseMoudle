@@ -1,4 +1,4 @@
-includeBuild("versionPlugin")
+includeBuild("../versionPlugin")
 include ':base_library'
 include ':app'
 rootProject.name = "BaseProject"
