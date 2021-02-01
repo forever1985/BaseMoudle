@@ -1,7 +1,11 @@
+plugins {
+    id "com.version.versionplugin" apply false
+}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
 import com.version.versionplugin.*
 android {
     compileSdkVersion BuildVersion.compileSdkVersion

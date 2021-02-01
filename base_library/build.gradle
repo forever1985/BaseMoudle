@@ -1,3 +1,6 @@
+plugins {
+    id "com.version.versionplugin" apply false
+}
 apply plugin: 'com.android.library'
 
 import com.version.versionplugin.*

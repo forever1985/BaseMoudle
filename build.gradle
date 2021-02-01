@@ -16,13 +16,13 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-plugins {
-    id "com.version.versionplugin" apply false
-}
-subprojects {
-    project.apply(plugin: "com.version.versionplugin")
-
-}
+//plugins {
+//    id "com.version.versionplugin" apply false
+//}
+//subprojects {
+//    project.apply(plugin: "com.version.versionplugin")
+//
+//}
 allprojects {
     repositories {
         google()
