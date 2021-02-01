@@ -8,6 +8,9 @@
  4、添加自定义dialog复用
 非常感谢[MVVMHabit](https://github.com/goldze/MVVMHabit)的结构,在此基础上添加功能
 
+最新版本:
+implementation 'com.github.forever1985:BaseMoudle:1.4.0'
+
 Copyright [(c)2021] [444989431@163.com]
 
    Licensed under the Apache License, Version 2.0 (the "License");
